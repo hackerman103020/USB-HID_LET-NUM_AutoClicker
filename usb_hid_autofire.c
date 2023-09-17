@@ -99,7 +99,7 @@ int32_t usb_hid_autofire_app(void* p) {
                        // btn_left_autofire = !btn_left_autofire;
                        // btn_right_autofire = false;
                         if(btn_sel == 0) {
-                            btn_sel = 1; 
+                            btn_sel = -1; 
                             btn_left_autofire = true; 
                             ison = true;             
                         }
