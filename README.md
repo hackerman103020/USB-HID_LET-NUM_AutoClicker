@@ -7,7 +7,8 @@
 
 [![Build](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml/badge.svg)](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml)
 
-This is a simple Flipper Zero application to send left-clicks as a USB HID device.
+This is a simple Flipper Zero application to send left/right-clicks as a USB HID device.
+this is a fork of: https://github.com/pbek/usb_hid_autofire
 
 ![Screenshot](screenshot.png)
 
@@ -24,7 +25,7 @@ of the *fap* file and put it into the `apps` folder on your SD card of your Flip
 
 ```shell
 cd applications_user
-git clone https://github.com/pbek/usb_hid_autofire.git
+git clone https://github.com/hackerman103020/usb_hid_left-right_autoclicker.git
 
 cd ..
 
