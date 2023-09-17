@@ -46,7 +46,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 100, 10, "v");
     canvas_draw_str(canvas, 106, 10, VERSION);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
-    canvas_draw_str(canvas, 0, 45, "delay [ms]:         [down] = off");
+    canvas_draw_str(canvas, 0, 45, "delay [ms]:                 [down] = off");
     canvas_draw_str(canvas, 0, 54, "up = switch left/right");
     canvas_draw_str(canvas, 50, 46, autofire_delay_str);
     canvas_draw_str(canvas, 0, 63, "Press [back] to exit");
