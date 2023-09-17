@@ -44,8 +44,8 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 100, 10, "v");
     canvas_draw_str(canvas, 106, 10, VERSION);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto left clicking");
-    canvas_draw_str(canvas, 0, 46, "delay [ms]:    up:right   down:left");
-    canvas_draw_str(canvas, 0, 53, "up:right   down:left");
+    canvas_draw_str(canvas, 0, 46, "delay [ms]:");
+    canvas_draw_str(canvas, 0, 54, "up = right   down = left");
     canvas_draw_str(canvas, 50, 46, autofire_delay_str);
     canvas_draw_str(canvas, 0, 63, "Press [back] to exit");
 }
@@ -95,7 +95,7 @@ int32_t usb_hid_autofire_app(void* p) {
                 switch(event.input.key) {
                     case InputKeyOk:
                        // btn_left_autofire = !btn_left_autofire;
-                        btn_right_autofire = false;
+                       // btn_right_autofire = false;
                         if(btn_left_select == true) {
                             btn_right_autofire = false;
                             btn_left_autofire = true;
