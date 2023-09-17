@@ -40,7 +40,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_set_font(canvas, FontPrimary);
     canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
     canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
-    canvas_draw_str(canvas, 50, 34, is-on ? "<active>" : "<inactive>");
+    canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
 
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
