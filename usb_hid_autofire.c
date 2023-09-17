@@ -102,7 +102,7 @@ int32_t usb_hid_autofire_app(void* p) {
                         if(btn_right_autofire == true) {
                             btn_right_autofire = false;
                         }
-                        btn_left_autofire = true:
+                        btn_left_autofire = true;
                         break; 
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
