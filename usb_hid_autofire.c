@@ -98,9 +98,9 @@ int32_t usb_hid_autofire_app(void* p) {
                         }
                         btn_right_autofire = true;
                         break;
-                    case InputKeyUp: // for switching to right
+                    case InputKeyDown: // for switching to left
                         if(btn_right_autofire == true) {
-                            btn_left_autofire = false;
+                            btn_right_autofire = false;
                         }
                         btn_left_autofire = true:
                         break; 
