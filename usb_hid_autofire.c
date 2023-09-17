@@ -22,8 +22,8 @@ typedef struct {
 
 bool btn_left_autofire = false;
 bool btn_right_autofire = false;
-bool btn_left_select = false;
-bool btn_right_select = false;
+bool btn_select = false;
+int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
@@ -96,27 +96,21 @@ int32_t usb_hid_autofire_app(void* p) {
                     case InputKeyOk:
                        // btn_left_autofire = !btn_left_autofire;
                        // btn_right_autofire = false;
-                        if(btn_left_select == true) {
+                        if(btn_sel == -1) {
                             btn_right_autofire = false;
                             btn_left_autofire = true;
                         }
-                        if(btn_right_select == true) {
+                        if(btn_sel == 1) {
                             btn_left_autofire = false;
                             btn_right_autofire = true;
                         }
                         break;
-                    case InputKeyUp: // for switching to right
-                        if(btn_left_select == true) {
-                            btn_left_select = false;
-                        }
-                        btn_right_select = true;
-                        break;
-                    case InputKeyDown: // for switching to left
-                        if(btn_right_select == true) {
-                            btn_right_select = false;
-                        }
-                        btn_left_select = true;
+                    case InputKeyUp: 
+                        btn_sel = (btn_sel * -1); // 1 = right       2 = left
                         break; 
+                        case InputKeyDown: 
+                        btn_sel = 0; 
+                        break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
                             autofire_delay -= 10;
