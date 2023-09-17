@@ -23,6 +23,7 @@ typedef struct {
 bool btn_left_autofire = false;
 bool btn_right_autofire = false;
 bool btn_select = false;
+bool ison = false;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 
@@ -33,12 +34,13 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     itoa(autofire_delay, autofire_delay_str, 10);
     //sprintf(autofire_delay_str, "%lu", autofire_delay);
 
+
     canvas_clear(canvas);
 
     canvas_set_font(canvas, FontPrimary);
     canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
     canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
-    canvas_draw_str(canvas, 50, 34, btn_left_autofire ? "<active>" : "<inactive>");
+    canvas_draw_str(canvas, 50, 34, is-on ? "<active>" : "<inactive>");
 
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
@@ -97,9 +99,7 @@ int32_t usb_hid_autofire_app(void* p) {
                        // btn_left_autofire = !btn_left_autofire;
                        // btn_right_autofire = false;
                         if(btn_sel == 0) {
-                            btn_left_autofire = true;
-                            btn_right_autofire = false;
-                            btn_sel = 1;
+                            btn_sel = 1;               
                         }
                         break;
                     case InputKeyUp: 
@@ -107,16 +107,19 @@ int32_t usb_hid_autofire_app(void* p) {
                         if(btn_sel == -1) {
                             btn_right_autofire = false;
                             btn_left_autofire = true;
+                            ison = true;
                         }
                         if(btn_sel == 1) {
                             btn_left_autofire = false;
                             btn_right_autofire = true;
+                            ison = true;
                         }
                         break; 
                         case InputKeyDown: 
                         btn_sel = 0; 
                         btn_right_autofire = false;
                         btn_left_autofire = false;
+                        ison = false;
                         break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
