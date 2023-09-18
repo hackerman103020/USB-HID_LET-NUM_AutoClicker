@@ -24,7 +24,7 @@ bool btn_left_autofire = false;
 bool btn_right_autofire = false;
 bool btn_select = false;
 bool ison = false;
-int prev_selec = 0:
+int prev_selec = 0;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 
