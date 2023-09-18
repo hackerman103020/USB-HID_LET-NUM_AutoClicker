@@ -18,7 +18,7 @@ this is a fork of: https://github.com/pbek/usb_hid_autofire
 
 ## Installation
 
-Download the [latest release]([https://github.com/pbek/usb_hid_autofire/releases/latest](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker))
+Download the [latest release](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker)
 of the *fap* file and put it into the `apps` folder on your SD card of your Flipper Zero. 
 
 ## Building
