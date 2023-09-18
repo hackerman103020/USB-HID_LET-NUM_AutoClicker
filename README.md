@@ -10,7 +10,7 @@
 This is a simple Flipper Zero application to send left/right-clicks as a USB HID device.
 this is a fork of: https://github.com/pbek/usb_hid_autofire
 
-![Screenshot](screenshots.png)
+![Screenshot](screenshot.png)
 
 ## Use-case
 
