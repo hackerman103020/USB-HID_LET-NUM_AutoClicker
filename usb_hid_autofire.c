@@ -24,7 +24,6 @@ bool btn_left_autofire = false;
 bool btn_right_autofire = false;
 bool btn_select = false;
 bool ison = false;
-int prev_selec = 0;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 
@@ -100,7 +99,7 @@ int32_t usb_hid_autofire_app(void* p) {
                        // btn_left_autofire = !btn_left_autofire;
                        // btn_right_autofire = false;
                         if(btn_sel == 0) {
-                            btn_sel = (prev_selec * -1); 
+                            btn_sel = -1; 
                             btn_left_autofire = true; 
                             ison = true;             
                         }
@@ -119,7 +118,6 @@ int32_t usb_hid_autofire_app(void* p) {
                         }
                         break; 
                         case InputKeyDown: 
-                        prev_selec = btn_sel;
                         btn_sel = 0; 
                         btn_right_autofire = false;
                         btn_left_autofire = false;
