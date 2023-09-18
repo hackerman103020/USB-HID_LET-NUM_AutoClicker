@@ -30,8 +30,8 @@ git clone https://github.com/hackerman103020/usb_hid_left-right_autoclicker.git
 cd ..
 
 # Build the application
-./fbt fap_usb_hid_autofire
+./fbt fap_usb_hid_left-right_autoclicker
 
 # Build and launch the application
-./fbt launch_app APPSRC=usb_hid_autofire
+./fbt launch_app APPSRC=usb_hid_left-right_autoclicker
 ```
