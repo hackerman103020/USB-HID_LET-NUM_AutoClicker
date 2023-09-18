@@ -3,7 +3,7 @@
 [GitHub]([https://github.com/pbek/usb_hid_autofire](https://github.com/hackerman103020/usb_hid_left-right_autoclicker)) |
 [Latest release]([https://github.com/pbek/usb_hid_autofire/releases/latest](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker)) |
 [Changelog](CHANGELOG.md) |
-[License](LICENSE.md)
+[License](LICENSE)
 
 [![Build](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml/badge.svg)](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml)
 
