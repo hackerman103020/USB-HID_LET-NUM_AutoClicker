@@ -29,7 +29,7 @@ int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "abc";
-words = "1.q";
+strcpy(words , "q.0");
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     UNUSED(ctx);
