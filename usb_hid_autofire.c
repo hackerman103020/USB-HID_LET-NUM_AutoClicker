@@ -5,6 +5,7 @@
 #include <input/input.h>
 #include "version.h"
 #include "tools.h"
+#include <stdio.h>
 #define TESTT foo
 
 // Uncomment to be able to make a screenshot
