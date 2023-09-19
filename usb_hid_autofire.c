@@ -5,7 +5,7 @@
 #include <input/input.h>
 #include "version.h"
 #include "tools.h"
-#define TESTT "6.9"
+#define TESTT foo
 
 // Uncomment to be able to make a screenshot
 //#define USB_HID_AUTOFIRE_SCREENSHOT
