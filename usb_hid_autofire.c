@@ -28,7 +28,7 @@ bool ison = false;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 char letter[3] = {'a','b','c'};
-char  words = "abc";  //{letter[0]};
+char * words = "abc";  //{letter[0]};
 words = "1.q";
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
