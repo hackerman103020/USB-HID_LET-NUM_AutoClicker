@@ -31,7 +31,7 @@ uint32_t autofire_delay = 10;
 char * words = "abc";
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
-    strcpy(words , wordsss);
+    strcpy(words , "p.1");
     UNUSED(ctx);
     char autofire_delay_str[12];
     //std::string pi = "pi is " + std::to_string(3.1415926);
