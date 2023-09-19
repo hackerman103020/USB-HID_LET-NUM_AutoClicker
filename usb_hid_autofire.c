@@ -3,6 +3,7 @@
 #include <furi_hal.h>
 #include <gui/gui.h>
 #include <input/input.h>
+#include <stdio.h>
 #include "version.h"
 #define TESTT = "6.9"
 
