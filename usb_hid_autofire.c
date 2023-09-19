@@ -26,6 +26,8 @@ bool btn_select = false;
 bool ison = false;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
+char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
+
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     UNUSED(ctx);
@@ -44,7 +46,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
 
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
-    canvas_draw_str(canvas, 106, 10, VERSION);
+    canvas_draw_str(canvas, 106, 10, All[3]");
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
     canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
     canvas_draw_str(canvas, 0, 54, "up = switch left/right");
