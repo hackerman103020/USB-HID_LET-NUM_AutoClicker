@@ -26,9 +26,8 @@ bool btn_select = false;
 bool ison = false;
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
-char Allppe[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
-int poppo = 32;
-char  words = {Allppe[0]};
+char letter[3] = {'a','b','c'};
+char  words = {letter[0]};
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     UNUSED(ctx);
