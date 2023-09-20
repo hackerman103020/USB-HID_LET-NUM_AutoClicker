@@ -34,6 +34,9 @@ uint32_t autofire_delay = 10;
 char * words = "ABC";
 char * qwert = "XYZ";
 char current[] = "xxx";
+char current1[] = "0";
+char current2[] = "a";
+char current3[] = "b";
 int prev = 36;
 int next = 1;
 int minchar = 0;  
@@ -56,7 +59,9 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
     canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
     canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
-    canvas_draw_str(canvas, 60, 54, current[1]);
+    canvas_draw_str(canvas, 5, 54, current1);
+    canvas_draw_str(canvas, 60, 54, current2);
+    canvas_draw_str(canvas, 120, 54, current3);
     
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
@@ -146,9 +151,9 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_left_autofire = false;
                         ison = false;
                             selectedAll = selectedAll + 1;
-                            current[0] = All[prev - 1];
-                            current[1] = All[selected];
-                            current[2] = All[next];
+                            current1[0] = All[prev - 1];
+                            current2[0] = All[selected];
+                            current3[0] = All[next];
         selected = selected + 1 ; 
         prev     =   selected;
         // if (selected < 35 && selected >= minchar) {
