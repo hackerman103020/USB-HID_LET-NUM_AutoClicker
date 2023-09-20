@@ -105,7 +105,8 @@ int32_t usb_hid_autofire_app(void* p) {
                         if(btn_sel == 0) {
                             btn_sel = -1; 
                             btn_left_autofire = true; 
-                            ison = true;             
+                            ison = true;        
+                            strcpy(words , "Nok");
                         }
                         break;
                     case InputKeyUp: 
