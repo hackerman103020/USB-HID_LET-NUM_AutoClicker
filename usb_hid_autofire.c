@@ -116,6 +116,7 @@ int32_t usb_hid_autofire_app(void* p) {
                          //   strcpy(words , qwert);
                                 testballs[0] = 'O';
                                 testballs[1] = 'K';
+                                testballs[2] = '_';
                         }
                         break;
                     case InputKeyUp: 
@@ -126,6 +127,7 @@ int32_t usb_hid_autofire_app(void* p) {
                             ison = true;
                             testballs[0] = 'U';
                             testballs[1] = 'P';
+                            testballs[2] = '_';
                         }
                         if(btn_sel == 1) {
                             btn_left_autofire = false;
