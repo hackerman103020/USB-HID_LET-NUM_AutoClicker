@@ -149,10 +149,12 @@ int32_t usb_hid_autofire_app(void* p) {
                             current[0] = All[prev];
                             current[1] = All[selected];
                             current[2] = All[next];
-        selected = selected + 1 ;
-       // next     =   ++next;
+        selected = selected + 1 ; 
         prev     =   selected;
-        if (selected >= 36)
+         if (selected < maxchar && selected >= minchar) {
+           next     =   next + 1 ;  
+        }
+        if (selected >= 37)
         {
             selected = minchar;  //if trying to go past last char, loop back around to 0
         }
