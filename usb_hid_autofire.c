@@ -1,6 +1,7 @@
 #include <string.h>
 #include <furi.h>
 #include <furi_hal.h>
+#include <furi_hal_usb_hid.h>
 #include <gui/gui.h>
 #include <input/input.h>
 #include <stdio.h>
@@ -193,11 +194,14 @@ int32_t usb_hid_autofire_app(void* p) {
         }
 
         if(btn_left_autofire) {
-            furi_hal_hid_mouse_press(HID_MOUSE_BTN_LEFT);
+            //furi_hal_hid_mouse_press(HID_MOUSE_BTN_LEFT);
+            furi_hal_hid_kb_press(HID_KEYBOARD_DELETE);
             // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
             furi_delay_us(autofire_delay * 500);
-            furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
-            furi_delay_us(autofire_delay * 500);
+            //furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
+            furi_delay_us(autofire_delay * 500)
+                    furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
+
         }
         if(btn_right_autofire) {
             furi_hal_hid_mouse_press(HID_MOUSE_BTN_RIGHT);
