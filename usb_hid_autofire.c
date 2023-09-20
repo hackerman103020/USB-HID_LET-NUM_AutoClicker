@@ -33,8 +33,8 @@ uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "ABC";
 char * qwert = "XYZ";
-char testballs[] = "xxx";
-//testballs[1] = '_';
+char current[] = "xxx";
+//current[1] = '_';
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
@@ -54,7 +54,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
 
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
-    canvas_draw_str(canvas, 106, 10, testballs);
+    canvas_draw_str(canvas, 106, 10, current);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
     canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
     canvas_draw_str(canvas, 0, 54, "up = switch left/right");
@@ -114,20 +114,20 @@ int32_t usb_hid_autofire_app(void* p) {
                             ison = true; 
                           //  selectedAll = selectedAll + 1;
                          //   strcpy(words , qwert);
-                                testballs[0] = 'O';
-                                testballs[1] = 'K';
-                                testballs[2] = '_';
+                                current[0] = 'O';
+                                current[1] = 'K';
+                                current[2] = '_';
                         }
                         break;
                     case InputKeyUp: 
                         btn_sel = (btn_sel * -1); // 1 = right       2 = left
+                            current[0] = 'U';
+                            current[1] = 'P';
+                            current[2] = '_';
                         if(btn_sel == -1) {
                             btn_right_autofire = false;
                             btn_left_autofire = true;
                             ison = true;
-                            testballs[0] = 'U';
-                            testballs[1] = 'P';
-                            testballs[2] = '_';
                         }
                         if(btn_sel == 1) {
                             btn_left_autofire = false;
@@ -140,23 +140,23 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_right_autofire = false;
                         btn_left_autofire = false;
                         ison = false;
-                            testballs[0] = All[3];
-                            testballs[1] = 'W';
-                            testballs[2] = 'N';
+                            current[0] = All[3];
+                            current[1] = 'W';
+                            current[2] = 'N';
                         break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
                             autofire_delay -= 5;
                         }
-                            testballs[0] = 'L';
-                            testballs[1] = 'F';
-                            testballs[2] = 'T';
+                            current[0] = 'L';
+                            current[1] = 'F';
+                            current[2] = 'T';
                         break;
                     case InputKeyRight:
                         autofire_delay += 5;
-                            testballs[0] = 'R';
-                            testballs[1] = 'H';
-                            testballs[2] = 'T';
+                            current[0] = 'R';
+                            current[1] = 'H';
+                            current[2] = 'T';
                         break;
                     default:
                         break;
