@@ -35,7 +35,7 @@ char * words = "ABC";
 char * qwert = "XYZ";
 char testballs[] = "xxx";
 
-testballs[1] = '_';
+//testballs[1] = '_';
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
