@@ -199,7 +199,7 @@ int32_t usb_hid_autofire_app(void* p) {
             // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
             furi_delay_us(autofire_delay * 500);
             //furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
-            furi_delay_us(autofire_delay * 500)
+            furi_delay_us(autofire_delay * 500);
                     furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
 
         }
