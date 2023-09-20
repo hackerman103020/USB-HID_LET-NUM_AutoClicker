@@ -140,7 +140,8 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_right_autofire = false;
                         btn_left_autofire = false;
                         ison = false;
-                            current[0] = All[3];
+                            selectedAll = ++selectedAll;
+                            current[0] = All[selectedAll];
                             current[1] = 'W';
                             current[2] = 'N';
                         break;
