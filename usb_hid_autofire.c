@@ -31,7 +31,8 @@ int btn_sel = 0; //     0 = off     1 = right     -1 = left
 int selectedAll = 0;
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
-char * words = "abc";
+char * words = "ABC";
+char * qwert = "xyz";
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
@@ -109,8 +110,8 @@ int32_t usb_hid_autofire_app(void* p) {
                             btn_sel = -1; 
                             btn_left_autofire = true; 
                             ison = true; 
-                            selectedAll = selectedAll + 1;
-                            strcpy(words , All[selectedAll]);
+                          //  selectedAll = selectedAll + 1;
+                            strcpy(words , qwert);
                         }
                         break;
                     case InputKeyUp: 
