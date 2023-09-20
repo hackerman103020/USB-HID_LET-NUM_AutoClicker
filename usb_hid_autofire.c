@@ -33,9 +33,9 @@ uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "ABC";
 char * qwert = "XYZ";
-char testballs[] = "qwe qq";
+char testballs[] = "xxx";
 
-test balls[4] = '_';
+testballs[1] = '_';
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
