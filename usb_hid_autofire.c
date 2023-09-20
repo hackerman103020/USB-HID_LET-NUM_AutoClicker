@@ -25,7 +25,10 @@ bool btn_left_autofire = false;
 bool btn_right_autofire = false;
 bool btn_select = false;
 bool ison = false;
+char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
+
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
+int selectedAll = 0;
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "abc";
@@ -105,8 +108,9 @@ int32_t usb_hid_autofire_app(void* p) {
                         if(btn_sel == 0) {
                             btn_sel = -1; 
                             btn_left_autofire = true; 
-                            ison = true;        
-                            strcpy(words , "Nok");
+                            ison = true; 
+                            selectedAll = selectedAll + 1;
+                            strcpy(words , All[selectedAll]);
                         }
                         break;
                     case InputKeyUp: 
