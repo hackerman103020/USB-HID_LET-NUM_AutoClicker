@@ -146,7 +146,7 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_left_autofire = false;
                         ison = false;
                             selectedAll = selectedAll + 1;
-                            current[0] = All[prev];
+                            current[0] = All[prev - 1];
                             current[1] = All[selected];
                             current[2] = All[next];
         selected = selected + 1 ; 
@@ -154,7 +154,7 @@ int32_t usb_hid_autofire_app(void* p) {
          if (selected < maxchar && selected >= minchar) {
            next     =   next + 1 ;  
         }
-        if (selected >= 37)
+        if (selected >= 36)
         {
             selected = minchar;  //if trying to go past last char, loop back around to 0
         }
