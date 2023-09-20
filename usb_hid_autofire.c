@@ -149,7 +149,7 @@ int32_t usb_hid_autofire_app(void* p) {
                             current[0] = All[selected];
                             current[1] = 'W';
                             current[2] = 'N';
-        selected = ++selected;
+        selected = selected + 1 ;
        // next     =   ++next;
         prev     =   selected;
         if (selected >= 37)
