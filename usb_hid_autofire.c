@@ -38,7 +38,6 @@ char testballs[] = "xxx";
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
-    testballs[1] = '_';
     UNUSED(ctx);
     char autofire_delay_str[12];
     //std::string pi = "pi is " + std::to_string(3.1415926);
@@ -114,7 +113,9 @@ int32_t usb_hid_autofire_app(void* p) {
                             btn_left_autofire = true; 
                             ison = true; 
                           //  selectedAll = selectedAll + 1;
-                            strcpy(words , qwert);
+                         //   strcpy(words , qwert);
+                                testballs[0] = 'O';
+                                testballs[1] = 'K';
                         }
                         break;
                     case InputKeyUp: 
@@ -123,6 +124,8 @@ int32_t usb_hid_autofire_app(void* p) {
                             btn_right_autofire = false;
                             btn_left_autofire = true;
                             ison = true;
+                            testballs[0] = 'U';
+                            testballs[1] = 'P';
                         }
                         if(btn_sel == 1) {
                             btn_left_autofire = false;
@@ -135,14 +138,23 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_right_autofire = false;
                         btn_left_autofire = false;
                         ison = false;
+                            testballs[0] = 'D';
+                            testballs[1] = 'W';
+                            testballs[2] = 'N';
                         break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
                             autofire_delay -= 5;
                         }
+                            testballs[0] = 'L';
+                            testballs[1] = 'F';
+                            testballs[2] = 'T';
                         break;
                     case InputKeyRight:
                         autofire_delay += 5;
+                            testballs[0] = 'R';
+                            testballs[1] = 'H';
+                            testballs[2] = 'T';
                         break;
                     default:
                         break;
