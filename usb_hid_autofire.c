@@ -34,6 +34,11 @@ uint32_t autofire_delay = 10;
 char * words = "ABC";
 char * qwert = "XYZ";
 char current[] = "xxx";
+int prev = 36;
+int next = 1;
+int minchar = 0;  
+int maxchar = 36; //length of array
+int selected = 0; 
 //current[1] = '_';
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
@@ -57,7 +62,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 106, 10, current);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
     canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
-    canvas_draw_str(canvas, 0, 54, "up = switch left/right");
+    canvas_draw_str(canvas, 0, 60, current);
     canvas_draw_str(canvas, 50, 46, autofire_delay_str);
     canvas_draw_str(canvas, 0, 63, "Press [back] to exit");
 }
@@ -141,9 +146,24 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_left_autofire = false;
                         ison = false;
                             selectedAll = selectedAll + 1;
-                            current[0] = All[selectedAll];
+                            current[0] = All[selected];
                             current[1] = 'W';
                             current[2] = 'N';
+        selected = ++selected;
+       // next     =   ++next;
+        prev     =   selected;
+        if (selected >= 37)
+        {
+            selected = minchar;  //if trying to go past last char, loop back around to 0
+        }
+        if (selected == minchar) 
+        {
+            prev = maxchar; //if on first char, then prev is the last char of array
+        }
+        if (selected == 35)
+        {
+    next = minchar;  //if on last char, then next char is first char of array
+        }
                         break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
