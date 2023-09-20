@@ -56,13 +56,13 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
     canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
     canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
-
+    canvas_draw_str(canvas, 60, 54, current[1]);
+    
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
     canvas_draw_str(canvas, 106, 10, current);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
     canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
-    canvas_draw_str(canvas, 60, 50, current);
     canvas_draw_str(canvas, 50, 46, autofire_delay_str);
     canvas_draw_str(canvas, 0, 63, "Press [back] to exit");
 }
