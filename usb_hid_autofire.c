@@ -38,7 +38,7 @@ char * words = "ABC";
 char * qwert = "XYZ";
 char current[] = "xxx";
 char current1[] = "0";
-char current2[] = "a";
+char MainSelect[] = "a";
 char current3[] = "b";
 int prev = 36;
 int next = 1;
@@ -63,7 +63,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
     canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
     canvas_draw_str(canvas, 5, 54, current1);
-    canvas_draw_str(canvas, 60, 54, current2);
+    canvas_draw_str(canvas, 60, 54, MainSelect);
     canvas_draw_str(canvas, 120, 54, current3);
     
     canvas_set_font(canvas, FontSecondary);
@@ -155,7 +155,13 @@ int32_t usb_hid_autofire_app(void* p) {
                         ison = false;
                             selectedAll = selectedAll + 1;
                             current1[0] = All[prev - 1];
-                            current2[0] = All[selected];
+                            MainSelect[0] = All[selected];
+                            if (MainSelect == "c") {
+                            current[0] = 'n';
+                            current[1] = 'i';
+                            current[2] = 'g'; 
+                                                           
+                            }
                             current3[0] = All[next];
         selected = selected + 1 ; 
         prev     =   selected;
@@ -177,14 +183,14 @@ int32_t usb_hid_autofire_app(void* p) {
                         break;
                     case InputKeyLeft:
                         if(autofire_delay > 0) {
-                            autofire_delay -= 5;
+                            autofire_delay -= 10;
                         }
                             current[0] = 'L';
                             current[1] = 'F';
                             current[2] = 'T';
                         break;
                     case InputKeyRight:
-                        autofire_delay += 5;
+                        autofire_delay += 10;
                             current[0] = 'R';
                             current[1] = 'H';
                             current[2] = 'T';
