@@ -140,7 +140,7 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_right_autofire = false;
                         btn_left_autofire = false;
                         ison = false;
-                            testballs[0] = 'D';
+                            testballs[0] = All[3];
                             testballs[1] = 'W';
                             testballs[2] = 'N';
                         break;
