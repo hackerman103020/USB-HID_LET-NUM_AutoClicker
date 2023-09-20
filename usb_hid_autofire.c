@@ -157,7 +157,7 @@ int32_t usb_hid_autofire_app(void* p) {
                             current1[0] = All[prev - 1];
                             MainSelect[0] = All[selected];
                             
-                            if (strcmp( MainSelect, 'c') == 0 ) {
+                            if (strcmp( MainSelect, "c") == 0 ) {
                             current[0] = 'n';
                             current[1] = 'i';
                             current[2] = 'g'; 
