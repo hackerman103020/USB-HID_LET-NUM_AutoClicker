@@ -6,6 +6,7 @@
 #include <input/input.h>
 #include <stdio.h>
 #include "version.h"
+#define KEY_A 0x04 // Keyboard a and A
 #define TESTT = "6.9"
 
 // Uncomment to be able to make a screenshot
@@ -195,12 +196,14 @@ int32_t usb_hid_autofire_app(void* p) {
 
         if(btn_left_autofire) {
             //furi_hal_hid_mouse_press(HID_MOUSE_BTN_LEFT);
-            furi_hal_hid_kb_press(HID_KEYBOARD_DELETE);
+           // furi_hal_hid_kb_press(HID_KEYBOARD_DELETE);
+             furi_hal_hid_kb_press(KEY_A);
             // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
             furi_delay_us(autofire_delay * 500);
             //furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
-            furi_delay_us(autofire_delay * 500);
-                    furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
+            furi_delay_us(autofire_delay * 500); 
+                   // furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
+            furi_hal_hid_kb_release(KEY_A);
 
         }
         if(btn_right_autofire) {
