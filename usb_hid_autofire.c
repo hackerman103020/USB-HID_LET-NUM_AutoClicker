@@ -32,7 +32,10 @@ int selectedAll = 0;
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "ABC";
-char * qwert = "xyz";
+char * qwert = "XYZ";
+char testballs[] = "qwe qq";
+
+test balls[4] = '_';
 
 static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
     //strcpy(words , "p.1");
@@ -52,7 +55,7 @@ static void usb_hid_autofire_render_callback(Canvas* canvas, void* ctx) {
 
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str(canvas, 100, 10, "v");
-    canvas_draw_str(canvas, 106, 10, words);
+    canvas_draw_str(canvas, 106, 10, testballs);
     canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
     canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
     canvas_draw_str(canvas, 0, 54, "up = switch left/right");
