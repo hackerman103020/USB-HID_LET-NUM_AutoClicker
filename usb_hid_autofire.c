@@ -136,12 +136,13 @@ btn_autofire = !btn_autofire;
 
           selected = selected - 1;
           prev = selected;
-          next = next + 1;
+          next = next - 1;
               //if (selected >= 36) {
-              //  selected = minchar; 
+               // selected = minchar; 
               //}
               if (selected < 0) {
                 selected = maxchar;
+                  prev = maxchar;
                   next = minchar;
               }
             //  if (selected == minchar) {
