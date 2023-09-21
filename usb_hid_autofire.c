@@ -115,10 +115,10 @@ int32_t usb_hid_autofire_app(void * p) {
         switch (event.input.key) {
         case InputKeyOk:
 btn_autofire = !btn_autofire;
-            if (btn_autofire = true) {
+            if (btn_autofire == true) {
                 ison = true;
             }
-            else {
+            else if (btn_autofire == false) {
                 ison = false; 
             }
 
