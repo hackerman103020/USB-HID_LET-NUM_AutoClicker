@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include "version.h"
 #include "Keycodes.h"
-#define KEY 0x05
+uint8_t Key_code;
+//#define KEY 0x05
 //#define KEY_A 0x04 // Keyboard a and A
 #define TESTT = "6.9"
 
@@ -162,7 +163,7 @@ int32_t usb_hid_autofire_app(void* p) {
                             current[0] = 'n';
                             current[1] = 'i';
                             current[2] = 'g'; 
-                            key = 0x04;                               
+                            Key_code = 0x04;                               
                             }
         selected = selected + 1 ; 
         prev     =   selected;
@@ -205,12 +206,12 @@ int32_t usb_hid_autofire_app(void* p) {
         if(btn_left_autofire) {
             //furi_hal_hid_mouse_press(HID_MOUSE_BTN_LEFT);
            // furi_hal_hid_kb_press(HID_KEYBOARD_DELETE);
-             furi_hal_hid_kb_press(key);
+             furi_hal_hid_kb_press(Key_code);
             // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
             furi_delay_us(autofire_delay * 500);
             //furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
             // furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
-            furi_hal_hid_kb_release(key);
+            furi_hal_hid_kb_release(Key_code);
             furi_delay_us(autofire_delay * 500); 
         
 
