@@ -34,11 +34,8 @@ typedef struct {
 }
 UsbMouseEvent;
 
-bool btn_left_autofire = false;
-bool btn_right_autofire = false;
-bool btn_select = false;
+bool btn_autofire = false;
 bool ison = false;
-int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 char current1[] = "0";
 char * current = "xxx";
@@ -58,8 +55,8 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_clear(canvas);
 
   canvas_set_font(canvas, FontPrimary);
-  canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
-  canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
+  canvas_draw_str(canvas, 0, 10, "LETTER/NUM AUTOCLICKER"); //16 charecters long
+  canvas_draw_str(canvas, 0, 34, btn_autofire ? "<left>" : "<right>");
   canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
   canvas_draw_str(canvas, 5, 55, current1);
   canvas_draw_str(canvas, 60, 55, MainSelect);
@@ -67,7 +64,6 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
 
   canvas_set_font(canvas, FontSecondary);
   canvas_draw_str(canvas, 100, 10, "v");
-  canvas_draw_str(canvas, 106, 10, current);
   canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
   canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
   canvas_draw_str(canvas, 50, 46, autofire_delay_str);
@@ -118,21 +114,32 @@ int32_t usb_hid_autofire_app(void * p) {
 
         switch (event.input.key) {
         case InputKeyOk:
-            if(btn_sel == 0) {
-                    btn_sel = -1; 
-                    btn_left_autofire = true; 
-                    ison = true; 
-                }
+btn_autofire = !btn_autofire;
+            if (btn_autofire = true) {
+                ison = true;
+            }
+            else {
+                ison = false; 
+            }
 
-            current[0] = 'O';
-            current[1] = 'K';
-            current[2] = '_';
             
-          if (btn_sel == 0) {
-            btn_sel = -1;
-            btn_left_autofire = true;
-            ison = true;
+          break;
+        case InputKeyUp:
+            
+            autofire_delay += 10;
+            
+          break;
+        case InputKeyDown:
+          if (autofire_delay > 0) {
+            autofire_delay -= 10;
           }
+          break;
+        case InputKeyLeft:
+
+
+            
+          break;
+        case InputKeyRight:
             
           selected = selected + 1;
           prev = selected;
@@ -155,45 +162,7 @@ int32_t usb_hid_autofire_app(void * p) {
                 // Handle the case where selected is out of range
                 // You can set a default value or take some other action.
               }
-
             
-          break;
-        case InputKeyUp:
-          btn_sel = (btn_sel * -1); 
-          current[0] = 'U';
-          current[1] = 'P';
-          current[2] = '_';
-          if (btn_sel == -1) {
-            btn_right_autofire = false;
-            btn_left_autofire = true;
-            ison = true;
-          }
-          if (btn_sel == 1) {
-            btn_left_autofire = false;
-            btn_right_autofire = true;
-            ison = true;
-          }
-            
-          break;
-        case InputKeyDown:
-          btn_sel = 0;
-          btn_right_autofire = false;
-          btn_left_autofire = false;
-          ison = false;
-          break;
-        case InputKeyLeft:
-          if (autofire_delay > 0) {
-            autofire_delay -= 10;
-          }
-          current[0] = 'L';
-          current[1] = 'F';
-          current[2] = 'T';
-          break;
-        case InputKeyRight:
-          autofire_delay += 10;
-          current[0] = 'R';
-          current[1] = 'H';
-          current[2] = 'T';
           break;
         default:
           break;
@@ -201,21 +170,14 @@ int32_t usb_hid_autofire_app(void * p) {
       }
     }
 
-    if (btn_left_autofire) {
+    if (btn_autofire) {
       furi_hal_hid_kb_press(Key_code);
       // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
       furi_delay_us(autofire_delay * 500);
       furi_hal_hid_kb_release(Key_code);
       furi_delay_us(autofire_delay * 500);
+    }
 
-    }
-    if (btn_right_autofire) {
-      furi_hal_hid_kb_press(KEY_B);
-      // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
-      furi_delay_us(autofire_delay * 500);
-      furi_hal_hid_kb_release(KEY_B);
-      furi_delay_us(autofire_delay * 500);
-    }
 
     view_port_update(view_port);
   }
