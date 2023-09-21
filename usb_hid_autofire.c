@@ -31,7 +31,7 @@ bool ison = false;
 char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
 
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
-int selectedAll = 0;
+//int selectedAll = 0;
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
 char * words = "ABC";
@@ -153,17 +153,16 @@ int32_t usb_hid_autofire_app(void* p) {
                         btn_right_autofire = false;
                         btn_left_autofire = false;
                         ison = false;
-                            selectedAll = selectedAll + 1;
+                           // selectedAll = selectedAll + 1;
                             current1[0] = All[prev - 1];
                             MainSelect[0] = All[selected];
-                            
-                            if (MainSelect == 'c' ) {
+                            current3[0] = All[next];
+                            if (selected == 2 ) {
                             current[0] = 'n';
                             current[1] = 'i';
                             current[2] = 'g'; 
                                                            
                             }
-                            current3[0] = All[next];
         selected = selected + 1 ; 
         prev     =   selected;
         // if (selected < 35 && selected >= minchar) {
