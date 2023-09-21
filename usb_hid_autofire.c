@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "version.h"
 #include "Keycodes.h"
+#define KEY 
 //#define KEY_A 0x04 // Keyboard a and A
 #define TESTT = "6.9"
 
@@ -162,7 +163,7 @@ int32_t usb_hid_autofire_app(void* p) {
                             current[0] = 'n';
                             current[1] = 'i';
                             current[2] = 'g'; 
-                                                           
+                            key = 0x04;                               
                             }
         selected = selected + 1 ; 
         prev     =   selected;
