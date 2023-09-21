@@ -148,8 +148,8 @@ btn_autofire = !btn_autofire;
               if (selected == minchar) {
                 prev = maxchar; 
               }
-              if (selected == 35) {
-                next = minchar; 
+              if (selected == 34) {
+                next = 35; 
               }
           current1[0]   =  All[prev - 1];
           MainSelect[0] =  All[selected];
