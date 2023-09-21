@@ -8,7 +8,7 @@
 #include "version.h"
 #include "Keycodes.h"
 
-uint8_t Key_code;
+uint8_t Key_code = 0x04;
 uint8_t keyCodes[] = {
     0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
     0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
@@ -61,8 +61,7 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_draw_str(canvas, 120, 55, current3);
 
   canvas_set_font(canvas, FontSecondary);
-  canvas_draw_str(canvas, 100, 10, "v");
-  canvas_draw_str(canvas, 50, 34, "up/down = time");
+  canvas_draw_str(canvas, 55, 34, "up/down = time");
   canvas_draw_str(canvas, 0, 22, "press [ok] for on/off");
   canvas_draw_str(canvas, 0, 45, "delay [ms]:               ");
   canvas_draw_str(canvas, 50, 46, autofire_delay_str);
@@ -135,7 +134,28 @@ btn_autofire = !btn_autofire;
           break;
         case InputKeyLeft:
 
-
+          selected = selected - 1;
+          prev = selected;
+          next = next + 1;
+              //if (selected >= 36) {
+              //  selected = minchar; 
+              //}
+              if (selected < 0) {
+                selected = maxchar;
+                  next = minchar;
+              }
+            //  if (selected == minchar) {
+             //   prev = maxchar; 
+             // }
+              if (selected == 35) {
+                next = minchar; 
+              }
+          current1[0]   =  All[prev - 1];
+          MainSelect[0] =  All[selected];
+          current3[0]   =  All[next];
+              if (selected >= 0 && selected <= 35) {
+                Key_code = keyCodes[selected];
+              } 
             
           break;
         case InputKeyRight:
@@ -157,10 +177,7 @@ btn_autofire = !btn_autofire;
           current3[0]   =  All[next];
               if (selected >= 0 && selected <= 35) {
                 Key_code = keyCodes[selected];
-              } else {
-                // Handle the case where selected is out of range
-                // You can set a default value or take some other action.
-              }
+              } 
             
           break;
         default:
