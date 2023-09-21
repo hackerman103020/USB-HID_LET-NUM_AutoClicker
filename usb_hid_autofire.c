@@ -50,6 +50,7 @@ char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p',
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 char current1[] = "0";
+char * current = "xxx";
 char MainSelect[] = "a";
 char current3[] = "b";
 int prev = 36;
@@ -130,8 +131,9 @@ int32_t usb_hid_autofire_app(void * p) {
                     btn_sel = -1; 
                     btn_left_autofire = true; 
                     ison = true; 
-                    testballs[0] = 'O';
-                    testballs[1] = 'K';
+                    current[0] = 'O';
+                    current[1] = 'K';
+                    current[2] = '_';
                 }
           if (selected >= 0 && selected <= 25) {
             Key_code = keyCodes[selected];
