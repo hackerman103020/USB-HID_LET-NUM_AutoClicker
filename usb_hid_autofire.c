@@ -34,7 +34,8 @@ int btn_sel = 0; //     0 = off     1 = right     -1 = left
 //int selectedAll = 0;
 uint32_t autofire_delay = 10;
 //char letter[3] = {'a','b','c'};
-char * words = "ABC";
+char * words = "ABC"; 
+char * keytest = "0x04";  
 char * qwert = "XYZ";
 char current[] = "xxx";
 char current1[] = "0";
@@ -204,12 +205,12 @@ int32_t usb_hid_autofire_app(void* p) {
         if(btn_left_autofire) {
             //furi_hal_hid_mouse_press(HID_MOUSE_BTN_LEFT);
            // furi_hal_hid_kb_press(HID_KEYBOARD_DELETE);
-             furi_hal_hid_kb_press(0x04);
+             furi_hal_hid_kb_press(keytest);
             // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
             furi_delay_us(autofire_delay * 500);
             //furi_hal_hid_mouse_release(HID_MOUSE_BTN_LEFT);
             // furi_hal_hid_kb_release(HID_KEYBOARD_DELETE);
-            furi_hal_hid_kb_release(0x04);
+            furi_hal_hid_kb_release(keytest);
             furi_delay_us(autofire_delay * 500); 
         
 
