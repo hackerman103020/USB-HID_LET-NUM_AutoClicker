@@ -21,17 +21,4 @@ this is a fork of: https://github.com/pbek/usb_hid_autofire
 Download the [latest release](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker)
 of the *fap* file and put it into the `apps` folder on your SD card of your Flipper Zero. 
 
-## Building
 
-```shell
-cd applications_user
-git clone https://github.com/hackerman103020/usb_hid_left-right_autoclicker.git
-
-cd ..
-
-# Build the application
-./fbt fap_usb_hid_left-right_autoclicker
-
-# Build and launch the application
-./fbt launch_app APPSRC=usb_hid_left-right_autoclicker
-```
