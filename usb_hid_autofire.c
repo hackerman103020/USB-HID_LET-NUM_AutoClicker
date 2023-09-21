@@ -143,11 +143,11 @@ btn_autofire = !btn_autofire;
               if (selected < 0) {
                 selected = 35;
                   prev = 35;
-                  next = minchar;
+                  next = maxchar;
               }
-             // if (selected == minchar) {
-               // prev = maxchar; 
-             // }
+              if (selected == minchar) {
+                prev = maxchar; 
+              }
               if (selected == 35) {
                 next = minchar; 
               }
