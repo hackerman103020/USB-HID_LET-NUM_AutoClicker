@@ -143,7 +143,7 @@ btn_autofire = !btn_autofire;
               if (selected < 0) {
                 selected = 35;
                   prev = 35;
-                  next = maxchar;
+                  next = minchar;
               }
               if (selected == minchar) {
                 prev = maxchar; 
