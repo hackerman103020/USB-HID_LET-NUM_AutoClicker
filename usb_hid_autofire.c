@@ -65,7 +65,7 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_draw_str(canvas, 0, 22, "press [ok] for on/off");
   canvas_draw_str(canvas, 0, 45, "delay [ms]:               ");
   canvas_draw_str(canvas, 50, 46, autofire_delay_str);
-  canvas_draw_str(canvas, 0, 63, "press [right] for LET/NUM");
+  canvas_draw_str(canvas, 0, 63, "Left/Right for LET/NUM");
 }
 
 static void usb_hid_autofire_input_callback(InputEvent * input_event, void * ctx) {
