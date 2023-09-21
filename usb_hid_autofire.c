@@ -35,7 +35,6 @@ typedef struct {
 UsbMouseEvent;
 
 bool btn_autofire = false;
-bool ison = false;
 uint32_t autofire_delay = 10;
 char current1[] = "0";
 char * current = "xxx";
@@ -55,19 +54,19 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_clear(canvas);
 
   canvas_set_font(canvas, FontPrimary);
-  canvas_draw_str(canvas, 0, 10, "LETTER/NUM AUTOCLICKER"); //16 charecters long
-  canvas_draw_str(canvas, 0, 34, btn_autofire ? "<left>" : "<right>");
-  canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
+  canvas_draw_str(canvas, 0, 10, "LET/NUM AUTOCLICKER"); //16 charecters long
+  canvas_draw_str(canvas, 0, 34, btn_autofire ? "<active>" : "<inactive>");
   canvas_draw_str(canvas, 5, 55, current1);
   canvas_draw_str(canvas, 60, 55, MainSelect);
   canvas_draw_str(canvas, 120, 55, current3);
 
   canvas_set_font(canvas, FontSecondary);
   canvas_draw_str(canvas, 100, 10, "v");
-  canvas_draw_str(canvas, 0, 22, "Press [ok] for auto clicking");
-  canvas_draw_str(canvas, 0, 45, "delay [ms]:               [down] = off");
+  canvas_draw_str(canvas, 50, 34, "up/down = time");
+  canvas_draw_str(canvas, 0, 22, "press [ok] for on/off");
+  canvas_draw_str(canvas, 0, 45, "delay [ms]:               ");
   canvas_draw_str(canvas, 50, 46, autofire_delay_str);
-  canvas_draw_str(canvas, 0, 63, "Press [back] to exit");
+  canvas_draw_str(canvas, 0, 63, "press [right] for LET/NUM");
 }
 
 static void usb_hid_autofire_input_callback(InputEvent * input_event, void * ctx) {
@@ -116,10 +115,10 @@ int32_t usb_hid_autofire_app(void * p) {
         case InputKeyOk:
 btn_autofire = !btn_autofire;
             if (btn_autofire == true) {
-                ison = true;
+                
             }
             else if (btn_autofire == false) {
-                ison = false; 
+                
             }
 
             
