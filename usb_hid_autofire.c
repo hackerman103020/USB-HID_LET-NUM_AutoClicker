@@ -159,18 +159,16 @@ int32_t usb_hid_autofire_app(void* p) {
                             current1[0] = All[prev - 1];
                             MainSelect[0] = All[selected];
                             current3[0] = All[next];
-                            if (selected == 2 ) {
-                            current[0] = 'n';
-                            current[1] = 'i';
-                            current[2] = 'g'; 
-                            Key_code = 0x04;                               
-                            }
-                            if (selected == 4 ) {
-                            current[0] = 'g';
-                            current[1] = 'e';
-                            current[2] = 'r'; 
-                            Key_code = 0x06;                               
-                            }
+                            if (selected == 0 ) { Key_code = 0x04; }
+                            if (selected == 1 ) { Key_code = 0x05; } if (selected == 2 ) { Key_code = 0x06; } if (selected == 3) { Key_code = 0x07; }
+                            if (selected == 4 ) { Key_code = 0x08; } if (selected == 5 ) { Key_code = 0x09; } if (selected == 6 ) { Key_code = 0x0a; }
+                            if (selected == 7 ) { Key_code = 0x0b; } if (selected == 8 ) { Key_code = 0x0c; } if (selected == 9 ) { Key_code = 0x0d; }
+                            if (selected == 10 ) { Key_code = 0x0e; } if (selected == 11 ) { Key_code = 0x0f; } if (selected == 12 ) { Key_code = 0x10; }
+                            if (selected == 13 ) { Key_code = 0x11; } if (selected == 14 ) { Key_code = 0x12; } if (selected == 15 ) { Key_code = 0x13; }
+                            if (selected == 16 ) { Key_code = 0x14; } if (selected == 17 ) { Key_code = 0x15; } if (selected == 18 ) { Key_code = 0x16; }
+                            if (selected == 19 ) { Key_code = 0x17; } if (selected == 20 ) { Key_code = 0x18; } if (selected == 21 ) { Key_code = 0x19; }
+                            if (selected == 22 ) { Key_code = 0x1a; } if (selected == 23 ) { Key_code = 0x1b; } if (selected == 19 ) { Key_code = 0x1c; }
+                            if (selected == 25 ) { Key_code = 0x1d; } 
         selected = selected + 1 ; 
         prev     =   selected;
         // if (selected < 35 && selected >= minchar) {
