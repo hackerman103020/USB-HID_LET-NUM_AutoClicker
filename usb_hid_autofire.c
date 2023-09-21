@@ -1,29 +1,22 @@
 #include <string.h>
-
 #include <furi.h>
-
 #include <furi_hal.h>
-
 #include <furi_hal_usb_hid.h>
-
 #include <gui/gui.h>
-
 #include <input/input.h>
-
 #include <stdio.h>
-
 #include "version.h"
-
 #include "Keycodes.h"
 
 uint8_t Key_code;
 uint8_t keyCodes[] = {
     0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
     0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21,
+    0x22, 0x23, 0x24, 0x25, 0x26, 0x27
 };
 
-#define TESTT = "6.9"
+char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
 
 // Uncomment to be able to make a screenshot
 //#define USB_HID_AUTOFIRE_SCREENSHOT
@@ -45,8 +38,6 @@ bool btn_left_autofire = false;
 bool btn_right_autofire = false;
 bool btn_select = false;
 bool ison = false;
-char All[36] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
-
 int btn_sel = 0; //     0 = off     1 = right     -1 = left
 uint32_t autofire_delay = 10;
 char current1[] = "0";
@@ -135,7 +126,7 @@ int32_t usb_hid_autofire_app(void * p) {
                     current[1] = 'K';
                     current[2] = '_';
                 }
-          if (selected >= 0 && selected <= 25) {
+          if (selected >= 0 && selected <= 35) {
             Key_code = keyCodes[selected];
           } else {
             // Handle the case where selected is out of range
@@ -164,7 +155,7 @@ int32_t usb_hid_autofire_app(void * p) {
           }
           break;
         case InputKeyUp:
-          btn_sel = (btn_sel * -1); // 1 = right       2 = left
+          btn_sel = (btn_sel * -1); 
           current[0] = 'U';
           current[1] = 'P';
           current[2] = '_';
@@ -184,23 +175,20 @@ int32_t usb_hid_autofire_app(void * p) {
           btn_right_autofire = false;
           btn_left_autofire = false;
           ison = false;
-          // selectedAll = selectedAll + 1;
           current1[0] = All[prev - 1];
           MainSelect[0] = All[selected];
           current3[0] = All[next];
           selected = selected + 1;
           prev = selected;
-          // if (selected < 35 && selected >= minchar) {
           next = next + 1;
-          //}
           if (selected >= 36) {
-            selected = minchar; //if trying to go past last char, loop back around to 0
+            selected = minchar; 
           }
           if (selected == minchar) {
-            prev = maxchar; //if on first char, then prev is the last char of array
+            prev = maxchar; 
           }
           if (selected == 35) {
-            next = minchar; //if on last char, then next char is first char of array
+            next = minchar; 
           }
           break;
         case InputKeyLeft:
