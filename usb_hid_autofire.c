@@ -149,9 +149,7 @@ int32_t usb_hid_autofire_app(void * p) {
           if (selected == 35) {
             next = minchar; 
           }
-
-
-          If (selected >= 0 && selected <= 35) {
+          if (selected >= 0 && selected <= 35) {
             Key_code = keyCodes[selected];
           } else {
             // Handle the case where selected is out of range
