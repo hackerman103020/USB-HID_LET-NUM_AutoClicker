@@ -123,6 +123,34 @@ int32_t usb_hid_autofire_app(void* p) {
                     case InputKeyOk:
                        // btn_left_autofire = !btn_left_autofire;
                        // btn_right_autofire = false;
+                                                   if (selected == 0 ) { Key_code = 0x04; }
+                            if (selected == 1 ) { Key_code = 0x05; } if (selected == 2 ) { Key_code = 0x06; } if (selected == 3) { Key_code = 0x07; }
+                            if (selected == 4 ) { Key_code = 0x08; } if (selected == 5 ) { Key_code = 0x09; } if (selected == 6 ) { Key_code = 0x0a; }
+                            if (selected == 7 ) { Key_code = 0x0b; } if (selected == 8 ) { Key_code = 0x0c; } if (selected == 9 ) { Key_code = 0x0d; }
+                            if (selected == 10 ) { Key_code = 0x0e; } if (selected == 11 ) { Key_code = 0x0f; } if (selected == 12 ) { Key_code = 0x10; }
+                            if (selected == 13 ) { Key_code = 0x11; } if (selected == 14 ) { Key_code = 0x12; } if (selected == 15 ) { Key_code = 0x13; }
+                            if (selected == 16 ) { Key_code = 0x14; } if (selected == 17 ) { Key_code = 0x15; } if (selected == 18 ) { Key_code = 0x16; }
+                            if (selected == 19 ) { Key_code = 0x17; } if (selected == 20 ) { Key_code = 0x18; } if (selected == 21 ) { Key_code = 0x19; }
+                            if (selected == 22 ) { Key_code = 0x1a; } if (selected == 23 ) { Key_code = 0x1b; } if (selected == 24 ) { Key_code = 0x1c; }
+                            if (selected == 25 ) { Key_code = 0x1d; } 
+                          selected = selected + 1 ; 
+        prev     =   selected;
+        // if (selected < 35 && selected >= minchar) {
+           next     =   next + 1 ;  
+        //}
+        if (selected >= 36)
+        {
+            selected = minchar;  //if trying to go past last char, loop back around to 0
+        }
+        if (selected == minchar) 
+        {
+            prev = maxchar; //if on first char, then prev is the last char of array
+        }
+        if (selected == 35)
+        {
+    next = minchar;  //if on last char, then next char is first char of array
+        }
+                        
                         if(btn_sel == 0) {
                             btn_sel = -1; 
                             btn_left_autofire = true; 
@@ -159,16 +187,6 @@ int32_t usb_hid_autofire_app(void* p) {
                             current1[0] = All[prev - 1];
                             MainSelect[0] = All[selected];
                             current3[0] = All[next];
-                            if (selected == 0 ) { Key_code = 0x04; }
-                            if (selected == 1 ) { Key_code = 0x05; } if (selected == 2 ) { Key_code = 0x06; } if (selected == 3) { Key_code = 0x07; }
-                            if (selected == 4 ) { Key_code = 0x08; } if (selected == 5 ) { Key_code = 0x09; } if (selected == 6 ) { Key_code = 0x0a; }
-                            if (selected == 7 ) { Key_code = 0x0b; } if (selected == 8 ) { Key_code = 0x0c; } if (selected == 9 ) { Key_code = 0x0d; }
-                            if (selected == 10 ) { Key_code = 0x0e; } if (selected == 11 ) { Key_code = 0x0f; } if (selected == 12 ) { Key_code = 0x10; }
-                            if (selected == 13 ) { Key_code = 0x11; } if (selected == 14 ) { Key_code = 0x12; } if (selected == 15 ) { Key_code = 0x13; }
-                            if (selected == 16 ) { Key_code = 0x14; } if (selected == 17 ) { Key_code = 0x15; } if (selected == 18 ) { Key_code = 0x16; }
-                            if (selected == 19 ) { Key_code = 0x17; } if (selected == 20 ) { Key_code = 0x18; } if (selected == 21 ) { Key_code = 0x19; }
-                            if (selected == 22 ) { Key_code = 0x1a; } if (selected == 23 ) { Key_code = 0x1b; } if (selected == 19 ) { Key_code = 0x1c; }
-                            if (selected == 25 ) { Key_code = 0x1d; } 
         selected = selected + 1 ; 
         prev     =   selected;
         // if (selected < 35 && selected >= minchar) {
