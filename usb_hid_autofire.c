@@ -141,12 +141,12 @@ btn_autofire = !btn_autofire;
                // selected = minchar; 
               //}
               if (selected < 0) {
-                selected = maxchar;
-                  prev = maxchar;
+                selected = 35;
+                  prev = 35;
                   next = minchar;
               }
-            //  if (selected == minchar) {
-             //   prev = maxchar; 
+             // if (selected == minchar) {
+               // prev = maxchar; 
              // }
               if (selected == 35) {
                 next = minchar; 
