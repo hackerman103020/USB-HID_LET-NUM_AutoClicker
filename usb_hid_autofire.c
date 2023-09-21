@@ -126,33 +126,39 @@ int32_t usb_hid_autofire_app(void * p) {
                     current[1] = 'K';
                     current[2] = '_';
                 }
-          if (selected >= 0 && selected <= 35) {
+
+            current[0] = 'O';
+            current[1] = 'K';
+            current[2] = '_';
+            
+          if (btn_sel == 0) {
+            btn_sel = -1;
+            btn_left_autofire = true;
+            ison = true;
+          }
+            
+          selected = selected + 1;
+          prev = selected;
+          next = next + 1;
+          if (selected >= 36) {
+            selected = minchar; 
+          }
+          if (selected == minchar) {
+            prev = maxchar; 
+          }
+          if (selected == 35) {
+            next = minchar; 
+          }
+
+
+          If (selected >= 0 && selected <= 35) {
             Key_code = keyCodes[selected];
           } else {
             // Handle the case where selected is out of range
             // You can set a default value or take some other action.
           }
-          selected = selected + 1;
-          prev = selected;
-          next = next + 1;
-          if (selected >= 36) {
-            selected = minchar; //if trying to go past last char, loop back around to 0
-          }
-          if (selected == minchar) {
-            prev = maxchar; //if on first char, then prev is the last char of array
-          }
-          if (selected == 35) {
-            next = minchar; //if on last char, then next char is first char of array
-          }
 
-          if (btn_sel == 0) {
-            btn_sel = -1;
-            btn_left_autofire = true;
-            ison = true;
-            current[0] = 'O';
-            current[1] = 'K';
-            current[2] = '_';
-          }
+            
           break;
         case InputKeyUp:
           btn_sel = (btn_sel * -1); 
@@ -169,6 +175,7 @@ int32_t usb_hid_autofire_app(void * p) {
             btn_right_autofire = true;
             ison = true;
           }
+            
           break;
         case InputKeyDown:
           btn_sel = 0;
@@ -178,18 +185,6 @@ int32_t usb_hid_autofire_app(void * p) {
           current1[0] = All[prev - 1];
           MainSelect[0] = All[selected];
           current3[0] = All[next];
-          selected = selected + 1;
-          prev = selected;
-          next = next + 1;
-          if (selected >= 36) {
-            selected = minchar; 
-          }
-          if (selected == minchar) {
-            prev = maxchar; 
-          }
-          if (selected == 35) {
-            next = minchar; 
-          }
           break;
         case InputKeyLeft:
           if (autofire_delay > 0) {
