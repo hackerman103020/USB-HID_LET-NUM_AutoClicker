@@ -165,6 +165,12 @@ int32_t usb_hid_autofire_app(void* p) {
                             current[2] = 'g'; 
                             Key_code = 0x04;                               
                             }
+                            if (selected == 4 ) {
+                            current[0] = 'g';
+                            current[1] = 'e';
+                            current[2] = 'r'; 
+                            Key_code = 0x06;                               
+                            }
         selected = selected + 1 ; 
         prev     =   selected;
         // if (selected < 35 && selected >= minchar) {
