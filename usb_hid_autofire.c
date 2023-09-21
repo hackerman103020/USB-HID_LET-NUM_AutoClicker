@@ -61,9 +61,9 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_draw_str(canvas, 0, 10, "USB HID RightClick"); //16 charecters long
   canvas_draw_str(canvas, 0, 34, btn_left_autofire ? "<left>" : "<right>");
   canvas_draw_str(canvas, 50, 34, ison ? "<active>" : "<inactive>");
-  canvas_draw_str(canvas, 5, 54, current1);
-  canvas_draw_str(canvas, 60, 54, MainSelect);
-  canvas_draw_str(canvas, 120, 54, current3);
+  canvas_draw_str(canvas, 5, 55, current1);
+  canvas_draw_str(canvas, 60, 55, MainSelect);
+  canvas_draw_str(canvas, 120, 55, current3);
 
   canvas_set_font(canvas, FontSecondary);
   canvas_draw_str(canvas, 100, 10, "v");
@@ -122,9 +122,6 @@ int32_t usb_hid_autofire_app(void * p) {
                     btn_sel = -1; 
                     btn_left_autofire = true; 
                     ison = true; 
-                    current[0] = 'O';
-                    current[1] = 'K';
-                    current[2] = '_';
                 }
 
             current[0] = 'O';
@@ -140,21 +137,24 @@ int32_t usb_hid_autofire_app(void * p) {
           selected = selected + 1;
           prev = selected;
           next = next + 1;
-          if (selected >= 36) {
-            selected = minchar; 
-          }
-          if (selected == minchar) {
-            prev = maxchar; 
-          }
-          if (selected == 35) {
-            next = minchar; 
-          }
-          if (selected >= 0 && selected <= 35) {
-            Key_code = keyCodes[selected];
-          } else {
-            // Handle the case where selected is out of range
-            // You can set a default value or take some other action.
-          }
+              if (selected >= 36) {
+                selected = minchar; 
+              }
+              if (selected == minchar) {
+                prev = maxchar; 
+              }
+              if (selected == 35) {
+                next = minchar; 
+              }
+          current1[0]   =  All[prev - 1];
+          MainSelect[0] =  All[selected];
+          current3[0]   =  All[next];
+              if (selected >= 0 && selected <= 35) {
+                Key_code = keyCodes[selected];
+              } else {
+                // Handle the case where selected is out of range
+                // You can set a default value or take some other action.
+              }
 
             
           break;
@@ -180,9 +180,6 @@ int32_t usb_hid_autofire_app(void * p) {
           btn_right_autofire = false;
           btn_left_autofire = false;
           ison = false;
-          current1[0] = All[prev - 1];
-          MainSelect[0] = All[selected];
-          current3[0] = All[next];
           break;
         case InputKeyLeft:
           if (autofire_delay > 0) {
