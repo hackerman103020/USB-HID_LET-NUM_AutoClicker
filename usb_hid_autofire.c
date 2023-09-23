@@ -35,7 +35,8 @@ typedef struct {
 UsbMouseEvent;
 
 bool btn_autofire = false;
-uint32_t autofire_delay = 10;
+float autofire_delay = 1000.0000;
+uint32_t cps = 1;
 char current1[] = "0";
 char * current = "xxx";
 char MainSelect[] = "a";
@@ -49,7 +50,7 @@ int selected = 0;
 static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   UNUSED(ctx);
   char autofire_delay_str[12];
-  itoa(autofire_delay, autofire_delay_str, 10);
+  itoa(cps, autofire_delay_str, 10);
 
   canvas_clear(canvas);
 
@@ -63,8 +64,8 @@ static void usb_hid_autofire_render_callback(Canvas * canvas, void * ctx) {
   canvas_set_font(canvas, FontSecondary);
   canvas_draw_str(canvas, 55, 34, "up/down = time");
   canvas_draw_str(canvas, 0, 22, "press [ok] for on/off");
-  canvas_draw_str(canvas, 0, 45, "delay [ms]:               ");
-  canvas_draw_str(canvas, 50, 46, autofire_delay_str);
+  canvas_draw_str(canvas, 0, 45, "CPS:");
+  canvas_draw_str(canvas, 40, 46, autofire_delay_str);
   canvas_draw_str(canvas, 0, 63, "Left/Right for LET/NUM");
 }
 
@@ -98,7 +99,7 @@ int32_t usb_hid_autofire_app(void * p) {
 
   UsbMouseEvent event;
   while (1) {
-    FuriStatus event_status = furi_message_queue_get(event_queue, & event, 50);
+    FuriStatus event_status = furi_message_queue_get(event_queue, & event, autofire_delay);
 
     if (event_status == FuriStatusOk) {
       if (event.type == EventTypeInput) {
@@ -124,13 +125,17 @@ btn_autofire = !btn_autofire;
           break;
         case InputKeyUp:
             
-            autofire_delay += 10;
+            if (cps < 100) {
+            cps += 1;
+          }
+           autofire_delay = (1000/cps);
             
           break;
         case InputKeyDown:
-          if (autofire_delay > 0) {
-            autofire_delay -= 10;
+          if (cps > 0) {
+            cps -= 1;
           }
+           autofire_delay = (1000/cps);
           break;
         case InputKeyLeft:
 
@@ -190,9 +195,7 @@ btn_autofire = !btn_autofire;
     if (btn_autofire) {
       furi_hal_hid_kb_press(Key_code);
       // TODO: Don't wait, but use the timer directly to just don't send the release event (see furi_hal_cortex_delay_us)
-      furi_delay_us(autofire_delay * 500);
       furi_hal_hid_kb_release(Key_code);
-      furi_delay_us(autofire_delay * 500);
     }
 
 
