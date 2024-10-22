@@ -1,11 +1,11 @@
 # USB HID Autofire
 
-[GitHub]([https://github.com/pbek/usb_hid_autofire](https://github.com/hackerman103020/usb_hid_left-right_autoclicker)) |
-[Latest release]([https://github.com/pbek/usb_hid_autofire/releases/latest](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker)) |
+[GitHub](https://github.com/hackerman103020/usb_hid_left-right_autoclicker) |
+[Latest release](https://flipc.org/hackerman103020/usb_hid_left-right_autoclicker) |
 [Changelog](CHANGELOG.md) |
 [License](LICENSE)
 
-[![Build](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml/badge.svg)](https://github.com/pbek/usb_hid_autofire/actions/workflows/build-test.yml)
+[![Build](https://github.com/hackerman103020/usb_hid_left-right_autoclicker/actions/workflows/build-test.yml/badge.svg)](https://github.com/hackerman103020/usb_hid_left-right_autoclicker/actions/workflows/build-test.yml)
 
 This is a simple Flipper Zero application to send left/right-clicks as a USB HID device.
 this is a fork of: https://github.com/pbek/usb_hid_autofire
